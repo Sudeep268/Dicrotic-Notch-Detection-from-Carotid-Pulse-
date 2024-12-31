@@ -1,14 +1,15 @@
 clc;
 clear all;
 %Loading the data
-y = readtable('PWs_Carotid_PPG.txt'); % load your dataset file
+y = readtable('PWs_Carotid_PPG.txt');
 y = table2array(y);
 y = y(5,:);
 y = y(2:488);
 
 figure(1)
 subplot(311)
-plot(y);
+plot(y)
+title("Actual Siganl")
 
 %Processing the signal
 N = length(y);
@@ -17,6 +18,7 @@ for n=3:N-2
 end
 subplot(312)
 plot(p);
+title("Preprocessed Signal")
 p = p.*p;
 M =16;
 s = zeros(1,N-2);
@@ -27,7 +29,8 @@ for  n = 1:length(p)-113
     end
 end
 subplot(313)
-plot(s);
+plot(s)
+title("Ouput")
 % Peak Detection
 threshold1 = 210;
 threshold2 = 380;
@@ -38,5 +41,8 @@ for i = 2:length(s)-1
     end
 end
 figure(2)
-plot(peaks);
+plot(peaks)
+title("Detected Peak")
+ylim([0 1.5])
+    
     
