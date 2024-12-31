@@ -1,7 +1,7 @@
 clc;
 clear all;
 %Loading the data
-y = readtable('E:\Study docu\3-1\BSP Lab\Project\Antu\PWs_csv\csv\PWs_Carotid_PPG.txt');
+y = readtable('PWs_Carotid_PPG.txt'); % load your dataset file
 y = table2array(y);
 y = y(5,:);
 y = y(2:488);
